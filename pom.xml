@@ -59,13 +59,23 @@
 						<phase>package</phase>
 						<goals>
 							<goal>build</goal>
-							<!--<goal>push</goal>-->
+							<goal>push</goal>
 						</goals>
 					</execution>
 				</executions>
                 <configuration>
                     <!--<repository>${docker.image.prefix}/${project.artifactId}</repository>-->
 					<repository>${docker.image.prefix}/${docker.image.repository}</repository>
+                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                    <!-- 在setting.xml中配置 
+                    <servers>
+                      <server>
+                        <id>registry.cn-hangzhou.aliyuncs.com</id>
+                        <username>793953767@qq.com</username>
+                        <password>jun12345</password>
+                      </server>
+                    </servers>
+                    -->
 					<tag>${tag}</tag>
                     <buildArgs>
                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
