@@ -1,4 +1,4 @@
-package spring.springboot2.x;
+package spring.springboot2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package spring.springboot2.x.zj;
+package spring.springboot2.zj;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
