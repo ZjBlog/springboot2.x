@@ -22,4 +22,16 @@ public class UserBot implements Serializable {
      */
     @Column(name = "`read`")
     private String readIs;
+    /**
+     * @Enumerated(EnumType.ORDINAL)
+     * 把一个枚举类型 映射到数据库 城int类型
+     * @Enumerated(EnumType.String)
+     * 映射城String
+     * 如果不加注解默认会使用enum 的ordinal 值存到数据库
+     */
+    /**
+     * 加注解 会是一个RED字符串
+     */
+    @Enumerated(EnumType.STRING)
+    private Color color;
 }

@@ -54,6 +54,12 @@ public class RabbitMqConfig {
      * @param connectionFactory
      * @return
      */
+    /**
+     * @Scope(“prototype”) 改变为多例（默认为单例Singleton）
+     * request session global session
+     * @param connectionFactory
+     * @return
+     */
     @Bean
     @Scope("prototype")
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {

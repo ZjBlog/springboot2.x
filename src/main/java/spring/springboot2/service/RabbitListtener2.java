@@ -14,10 +14,21 @@ import java.io.IOException;
  * @author : ZJ
  * @date : 19-6-21 下午1:32
  */
+
+/**
+ * @RabbitListener可以用在方法及类上
+ * 如果放在类上需要和@RabbitHandler 配合使用  根据 内容类型 去走那个方法处理
+ */
 @Component
 @RabbitListener(queues = "zz")
 public class RabbitListtener2 {
 
+    /**
+     * userBot类型走这个
+     * @param userBot
+     * @param channel
+     * @param tag
+     */
     @RabbitHandler
     public void test(UserBot userBot, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
         System.out.println(userBot.toString());
@@ -43,6 +54,12 @@ public class RabbitListtener2 {
         }
     }
 
+    /**
+     * string 类型走这个
+     * @param userBot
+     * @param channel
+     * @param tag
+     */
     @RabbitHandler
     public void test(String userBot, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
         System.out.println(userBot);

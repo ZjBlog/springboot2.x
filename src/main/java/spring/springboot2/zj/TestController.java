@@ -3,8 +3,10 @@ package spring.springboot2.zj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import spring.springboot2.entity.Color;
 import spring.springboot2.entity.UserBot;
 import spring.springboot2.exercise.zeren.ZeRenService;
+import spring.springboot2.repository.UserBotRepository;
 import spring.springboot2.service.RabbitSender;
 import spring.springboot2.service.RabbitSender1;
 
@@ -25,10 +27,13 @@ public class TestController {
     @Autowired
     private ZeRenService zeRenService;
 
+    @Autowired
+    private UserBotRepository userBotRepository;
+
 
     @GetMapping("/test1")
     public String test1() {
-        UserBot userBot=new UserBot();
+        UserBot userBot = new UserBot();
         userBot.setId(1);
         userBot.setReadIs("dddd");
         rabbitSender1.sendMsg(userBot);
@@ -40,5 +45,19 @@ public class TestController {
     public String test() {
         zeRenService.cal("duration");
         return "ok";
+    }
+
+    @GetMapping("/test2")
+    public Object test2() {
+        return userBotRepository.findAll();
+    }
+
+    @GetMapping("/test3")
+    public Object test3() {
+        UserBot userBot = new UserBot();
+        userBot.setReadIs("dddd");
+        userBot.setColor(Color.BLUE);
+        userBot=userBotRepository.save(userBot);
+        return userBot;
     }
 }
