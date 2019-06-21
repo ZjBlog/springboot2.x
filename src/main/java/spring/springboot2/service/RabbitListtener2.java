@@ -1,6 +1,7 @@
 package spring.springboot2.service;
 
 import com.rabbitmq.client.Channel;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -11,29 +12,15 @@ import java.io.IOException;
 
 /**
  * @author : ZJ
- * @date : 19-6-21 上午11:49
+ * @date : 19-6-21 下午1:32
  */
-//@Component
-public class RabbitListtener {
+@Component
+@RabbitListener(queues = "zz")
+public class RabbitListtener2 {
 
-    @RabbitListener(queues = "zz")
+    @RabbitHandler
     public void test(UserBot userBot, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
         System.out.println(userBot.toString());
-
-        if ("test".equals(userBot.getReadIs())) {
-            System.out.println("错误的消息");
-            try {
-                /**
-                 * 说明该消息被 nack 后一直重新入队列然后一直重新消费
-                 * 消费失败
-                 * 是否批量.true:将一次性拒绝所有小于deliveryTag的消息。
-                 * 被拒绝的是否重新入队列
-                 */
-                channel.basicNack(tag, false, true);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
         /**
          * 确认消费成功
          */
@@ -44,6 +31,22 @@ public class RabbitListtener {
             e.printStackTrace();
         }
 
+        /**
+         * 拒绝该消息，消息会被丢弃，不会重回队列
+         * 不能重复使用一个tag否则会reply-code=406, reply-text=PRECONDITION_FAILED - unknown delivery tag 1, class-id=60, method-id=80
+         * 出错
+         */
+        try {
+            channel.basicReject(tag, false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RabbitHandler
+    public void test(String userBot, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
+        System.out.println(userBot);
+        System.out.println("String");
         /**
          * 拒绝该消息，消息会被丢弃，不会重回队列
          * 不能重复使用一个tag否则会reply-code=406, reply-text=PRECONDITION_FAILED - unknown delivery tag 1, class-id=60, method-id=80

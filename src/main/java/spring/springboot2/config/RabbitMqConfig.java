@@ -3,10 +3,13 @@ package spring.springboot2.config;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.RabbitListenerContainerFactory;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.SerializerMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 /**
  * @author : ZJ
@@ -43,5 +46,18 @@ public class RabbitMqConfig {
     @Bean
     public Binding binding() {
         return BindingBuilder.bind(this.queue()).to(this.defaultExchange()).with("zzz");
+    }
+
+
+    /**
+     * Only one ConfirmCallback is supported by each RabbitTemplate  解决这个问题
+     * @param connectionFactory
+     * @return
+     */
+    @Bean
+    @Scope("prototype")
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+        RabbitTemplate template = new RabbitTemplate(connectionFactory);
+        return template;
     }
 }

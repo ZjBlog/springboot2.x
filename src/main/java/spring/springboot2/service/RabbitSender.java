@@ -6,26 +6,22 @@ import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import spring.springboot2.entity.UserBot;
 
 import java.util.UUID;
 
 /**
  * @author : ZJ
- * @date : 19-5-31 下午5:29
+ * @date : 19-6-21 下午1:46
  */
 @Component
 @Slf4j
-public class RabbitSender1 {
-
+public class RabbitSender {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-
-    public void sendMsg(UserBot content) {
+    public void sendMsg(String content) {
 
         CorrelationData correlationId = new CorrelationData(UUID.randomUUID().toString());
-
 
         /**
          * 消息到了broker
