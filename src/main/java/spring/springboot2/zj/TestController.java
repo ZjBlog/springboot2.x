@@ -9,6 +9,7 @@ import spring.springboot2.exercise.zeren.ZeRenService;
 import spring.springboot2.repository.UserBotRepository;
 import spring.springboot2.service.RabbitSender;
 import spring.springboot2.service.RabbitSender1;
+import spring.springboot2.service.TransactionalService;
 
 /**
  * @author : ZJ
@@ -29,6 +30,9 @@ public class TestController {
 
     @Autowired
     private UserBotRepository userBotRepository;
+
+    @Autowired
+    private TransactionalService transactionalService;
 
 
     @GetMapping("/test1")
@@ -59,5 +63,15 @@ public class TestController {
         userBot.setColor(Color.BLUE);
         userBot=userBotRepository.save(userBot);
         return userBot;
+    }
+
+    @GetMapping("/test4")
+    public Object test4() {
+        try {
+            transactionalService.testSysConfig2();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "ok";
     }
 }
