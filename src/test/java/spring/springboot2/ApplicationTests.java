@@ -1,4 +1,4 @@
-package spring.springboot2.x;
+package spring.springboot2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 //@SpringBootTest
 public class ApplicationTests {
 
-	@Test
+	//@Test
 	public void contextLoads() {
         int totalSecs=12000;
         int  hours = totalSecs / 3600;
