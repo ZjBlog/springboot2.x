@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : ZJ
@@ -34,4 +36,15 @@ public class UserBot implements Serializable {
      */
     @Enumerated(EnumType.STRING)
     private Color color;
+
+    /**
+     *  mappedBy="user"中的user是RoleBot中的user属性
+     */
+    /**
+     *   //级联保存、更新、删除、刷新;延迟加载。当删除用户，会级联删除该用户的所有文章
+     *     //拥有mappedBy注解的实体类为关系被维护端
+     */
+    @OneToMany(cascade = { CascadeType.REFRESH, CascadeType.PERSIST,CascadeType.MERGE, CascadeType.REMOVE },
+            mappedBy ="user",fetch = FetchType.LAZY)
+    private List<RoleBot> list =new ArrayList<>();
 }

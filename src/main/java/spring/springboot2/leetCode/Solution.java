@@ -127,7 +127,7 @@ public class Solution {
 
     public static List<Integer> postorderTraversal2(TreeNode root) {
         List<Integer> list = new ArrayList<Integer>();
-        preorder1(root, list);
+        preorder2(root, list);
         return list;
     }
 
@@ -139,14 +139,14 @@ public class Solution {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         TreeNode treeNode = new TreeNode(1);
         TreeNode t1 = new TreeNode(2);
         TreeNode t2 = new TreeNode(3);
         t1.left = t2;
         treeNode.right = t1;
 
-        System.out.println(preorderTraversal(treeNode));
+        System.out.println(postorderTraversal2(treeNode));
 
     }
 }
