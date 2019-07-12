@@ -1,10 +1,9 @@
 package spring.springboot2.leetCode;
 
 import com.sun.org.apache.xerces.internal.dom.PSVIAttrNSImpl;
+import org.omg.PortableInterceptor.INACTIVE;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author : ZJ
@@ -96,7 +95,7 @@ public class Solution {
      * @param root
      * @return
      */
-    public static List<Integer> inorderTraversal1(TreeNode root) {
+    public static List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
         if (root == null) {
             return res;
@@ -146,7 +145,63 @@ public class Solution {
         t1.left = t2;
         treeNode.right = t1;
 
-        System.out.println(postorderTraversal2(treeNode));
+        System.out.println(postorderTraversal(treeNode));
 
+    }
+
+
+    public  static  List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> lists=new ArrayList<>();
+        if(root==null){
+            return lists;
+        }
+
+        Queue<TreeNode> queue=new LinkedList();
+        Queue<TreeNode> queue1=new LinkedList();
+        queue.add(root);
+
+        List<Integer> list=new ArrayList<>();
+        TreeNode curr=null;
+        while (!queue.isEmpty()){
+            curr=queue.poll();
+            list.add(curr.val);
+
+            if(curr.left!=null){
+                queue1.add(curr.left);
+            }
+            if(curr.right!=null){
+                queue1.add(curr.right);
+            }
+
+            if(queue.isEmpty()){
+                lists.add(list);
+                queue.addAll(queue1);
+                queue1.clear();
+                list=new ArrayList<>();
+            }
+
+        }
+        return lists;
+    }
+    public static void main(String[] args) {
+        TreeNode treeNode = new TreeNode(3);
+
+        TreeNode t1 = new TreeNode(9);
+
+        TreeNode t2 = new TreeNode(20);
+
+
+        TreeNode t3 = new TreeNode(15);
+
+        TreeNode t4 = new TreeNode(7);
+
+        t2.left=t3;
+        t2.right=t4;
+        treeNode.left=t1;
+        treeNode.right=t2;
+
+        List<List<Integer>> lists = levelOrder(treeNode);
+
+        System.out.println(lists);
     }
 }
