@@ -183,7 +183,21 @@ public class Solution {
         }
         return lists;
     }
-    public static void main(String[] args) {
+
+
+
+    public static  void levelOrder(TreeNode root, List<List<Integer>> list, int level){
+        if(root != null){
+            if(level > list.size() - 1){
+                List<Integer> nodes = new ArrayList<>();
+                list.add(nodes);
+            }
+            list.get(level).add(root.val);
+            levelOrder(root.left, list, level + 1);
+            levelOrder(root.right, list, level + 1);
+        }
+    }
+    public static void main2(String[] args) {
         TreeNode treeNode = new TreeNode(3);
 
         TreeNode t1 = new TreeNode(9);
@@ -203,5 +217,12 @@ public class Solution {
         List<List<Integer>> lists = levelOrder(treeNode);
 
         System.out.println(lists);
+
+
+
+        List<List<Integer>> list = new ArrayList<>();
+        levelOrder(treeNode, list, 0);
+
+        System.out.println(list);
     }
 }
