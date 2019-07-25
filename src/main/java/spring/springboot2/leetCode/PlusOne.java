@@ -30,7 +30,7 @@ public class PlusOne {
         return digits;
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
 
         int[] arrays = {9};
         int[] ints = plusOne(arrays);

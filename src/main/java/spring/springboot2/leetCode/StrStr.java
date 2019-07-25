@@ -42,7 +42,7 @@ public class StrStr {
         return -1;
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         "ss".indexOf("s");
         System.out.println(strStr("mississippi","issip"));
     }
