@@ -21,7 +21,7 @@ public class ArrayPairSum {
         return num;
     }
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         int[] nums={1,4,2,3};
 
         System.out.println(arrayPairSum(nums));
