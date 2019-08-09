@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import spring.springboot2.config.WxTest;
+import spring.springboot2.service.ThymeleafService;
 
 @RestController
 public class HelloWorld {
@@ -15,10 +16,26 @@ public class HelloWorld {
     @Autowired
     private WxTest wxTest;
 
+
+    @Autowired
+    ThymeleafService thymeleafService;
+
     @Value(value = "${username}")
     private String name;
+
+
     @GetMapping("/")
-    public  String HellorWorld(){
-        return  "Hello World 1Spring boot2.x for" + name+"==="+wxTest;
+    public String HellorWorld() {
+        return "Hello World 1Spring boot2.x for" + name + "===" + wxTest;
+    }
+
+
+    @GetMapping("/test22")
+    public String HellorWorld11() {
+
+//http://www.glxxw2018.com/study/blog/detail/ag6Gf13MuC.html
+        thymeleafService.createHtml(55L);
+
+        return "ok";
     }
 }
