@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+spring.springboot2.config.EnvConfig,\
+spring.springboot2.config.WxTest

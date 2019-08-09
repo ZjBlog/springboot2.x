@@ -52,7 +52,7 @@ public class Test2 {
     }
 
 
-    @Test
+    //@Test
     public void test2() {
 
         String[] str = new String[]{"flower", "flow", "flight"};
@@ -79,13 +79,11 @@ public class Test2 {
 
 
     }
+    @Test
+    public void test5() {
 
-    public static void main(String[] args) {
-        char[] chars = "str".toCharArray();
 
-        chars[2] = ' ';
 
-        System.out.println(String.valueOf(chars).trim());
+
     }
-
 }
