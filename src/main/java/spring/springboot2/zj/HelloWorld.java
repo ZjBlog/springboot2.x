@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import spring.springboot2.config.WxTest;
 import spring.springboot2.service.ThymeleafService;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 public class HelloWorld {
 
@@ -31,11 +33,11 @@ public class HelloWorld {
 
 
     @GetMapping("/test22")
-    public String HellorWorld11() {
-
+    public void HellorWorld11( HttpServletResponse response) {
 //http://www.glxxw2018.com/study/blog/detail/ag6Gf13MuC.html
         thymeleafService.createHtml(55L);
 
-        return "ok";
+        response.setStatus(302);
+        response.setHeader("Location", "http://www.baidu.com");
     }
 }
