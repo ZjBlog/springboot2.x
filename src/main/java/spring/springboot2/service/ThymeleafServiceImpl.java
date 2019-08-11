@@ -19,7 +19,8 @@ import java.util.Map;
 @Service
 public class ThymeleafServiceImpl implements ThymeleafService {
 
-    public static final String destPath = "/home/zj/zj/html";
+    //public static final String destPath = "/home/zj/zj/html";
+    public static final String destPath = "D:\\Develop\\nginx-1.14.0\\html";
 
     @Autowired
     private TemplateEngine templateEngine;
@@ -27,7 +28,7 @@ public class ThymeleafServiceImpl implements ThymeleafService {
     public Map<String, Object> loadModel(Long id) {
         Map<String, Object> map = new HashMap<>();
         map.put("name", "tellsea");
-        map.put("age", 20);
+        map.put("age", id);
         map.put("email", "3210054449@qq.com");
         return map;
     }
