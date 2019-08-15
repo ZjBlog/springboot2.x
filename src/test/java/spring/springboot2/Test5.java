@@ -1,6 +1,8 @@
 package spring.springboot2;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Test5 {
 
@@ -35,7 +37,7 @@ public class Test5 {
         System.out.println(f + "");
     }
 
-    public static void main(String[] args) {
+    public static void main22(String[] args) {
 
 
         System.out.println(count1(11));
@@ -112,7 +114,43 @@ public class Test5 {
 
         String C="this is dog";String D="this is cat"; //[dog,cat]
 
-
+        return null;
     }
 
+    public static void main(String[] args) {
+        String A="this is dog";String B="this is a cat";
+
+        Map<String,Integer> map=new HashMap<>();
+
+
+        String[] s = A.split(" ");
+        for (String s1 : s) {
+            if(map.get(s1)==null){
+                map.put(s1,1);
+            }else{
+                map.put(s1,map.get(s1)+1);
+            }
+
+        }
+
+        String[] s2 = B.split(" ");
+
+        for (String s1 : s2) {
+            if(map.get(s1)==null){
+                map.put(s1,1);
+            }else{
+                map.put(s1,map.get(s1)+1);
+            }
+        }
+
+        for (String s1 : map.keySet()) {
+
+            if(map.get(s1)==1){
+                System.out.println(s1);
+            }
+
+        }
+
+        System.out.println();
+    }
 }
