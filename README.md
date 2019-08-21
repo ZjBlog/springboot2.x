@@ -36,9 +36,11 @@ eureka.server.responseCacheUpdateIntervalMs = 3000 eureka.client.registryFetchIn
 
 eureka.client.leaseRenewalIntervalInSeconds = 30 eureka.server.evictionIntervalTimerInMs = 60000 eureka.instance.leaseExpirationDurationInSeconds = 90
 
-=======
 
 http://www.sohu.com/a/216162666_132276
 1 . 保证了不同线程对该变量操作的内存可见性;
 2 . 禁止指令重排序
+
+
+
 
