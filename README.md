@@ -47,3 +47,11 @@ https://www.jianshu.com/p/0fa4fdc61513
 
 https://www.jianshu.com/p/26598df44b5f
 https://blog.csdn.net/cdy1996/article/details/94316726
+
+//gatewayfilter
+https://blog.csdn.net/forezp/article/details/85057268
+https://www.jianshu.com/p/97c474ae0302
+https://www.cnblogs.com/liukaifeng/p/10055866.html
+https://blog.csdn.net/yangyangiud/article/details/84574078#24_ribbon_16
+
+https://cloud.tencent.com/developer/article/1458200
