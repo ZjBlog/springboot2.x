@@ -10,7 +10,7 @@ import java.util.concurrent.Semaphore;
  */
 public class Test11 {
 
-    @Test
+    //@Test
     public void test() {
         Semaphore semaphore = new Semaphore(5);
 
@@ -28,5 +28,10 @@ public class Test11 {
 
 
         }
+    }
+
+    @Test
+    public void test1() {
+      System.out.println(0%2);
     }
 }
