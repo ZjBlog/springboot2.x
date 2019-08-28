@@ -33,10 +33,13 @@ public class ApplicationTests {
         System.out.println(timeString);
     }
 
-    //@Test
+   // @Test
     public void test() {
         List<String> stringList = new ArrayList<>();
+
+
         List<Integer> integerList = new ArrayList<>();
+
         stringList.add("a");
         stringList.add("b");
         stringList.add("c");
@@ -69,6 +72,7 @@ public class ApplicationTests {
             System.out.println(s);
         }
 
+
     }
 
     /**
@@ -85,7 +89,7 @@ public class ApplicationTests {
      * 此时就会抛出java.util.ConcurrentModificationException异常
      *https://www.jianshu.com/p/c5b52927a61a
      */
-    @Test
+   // @Test
     public void test1() {
         List<String> list = Lists.newArrayList("1", "12", "13", "14", "15", "0");
 
@@ -112,6 +116,44 @@ public class ApplicationTests {
 
     }
 
+  //  @Test
+    public void testRemove2(){
+        List<Integer> integers = new ArrayList<>(5);
 
+        integers.add(1);
+        integers.add(2);
+        integers.add(2);
+        integers.add(4);
+        integers.add(5);
+
+        for (int i = 0; i < integers.size(); i++) {
+
+            if (integers.get(i)%2==0){
+                System.out.println(i);
+                integers.remove(i);
+                System.out.println(integers.toString());
+            }
+
+        }
+
+        System.out.println(integers);
+    }
+
+    @Test
+    public void testRemove5(){
+        List<String> strings = new ArrayList<>();
+        strings.add("a");
+        strings.add("b");
+        strings.add("c");
+        strings.add("d");
+
+        int size = strings.size();
+        for (int i = 0; i < strings.size(); i++) {
+            System.out.println(i);
+            strings.remove(i);
+        }
+        System.out.println(strings);
+
+    }
 
 }
