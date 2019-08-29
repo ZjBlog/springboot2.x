@@ -42,3 +42,4 @@ loadFactoryNames 根据接口获取其接口类的名称，这个方法返回的
 上面的两个方法的关键都是从指定的ClassLoader中获取spring.factories文件，并解析得到类名列表，
 
 https://www.jianshu.com/p/e89c693f19d2
+https://www.cnblogs.com/andy-zhou/p/5327288.html
