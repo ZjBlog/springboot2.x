@@ -16,6 +16,17 @@ public class Test7 {
     @Test
     public void test() throws InterruptedException, ExecutionException {
 
+
+        TaskWithResult taskWithResult = new TaskWithResult();
+
+        FutureTask<Integer> task1=new FutureTask<>(taskWithResult);
+
+        new Thread(task1).start();
+
+        FutureTask<Integer> task = new FutureTask<Integer>(taskWithResult);
+        new Thread(task, "线程").start();
+        System.out.println(task.get()+"=====");
+
         Executor executor = Executors.newFixedThreadPool(10);
 
         CompletionService<String> service = new ExecutorCompletionService<>(executor);
