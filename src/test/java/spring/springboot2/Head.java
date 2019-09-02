@@ -16,6 +16,7 @@ public class Head {
 
     public static void sort(int []arr){
         //1.构建大顶堆
+        //找到最后一个非叶子节点就是：长度/2-1
         for(int i=arr.length/2-1;i>=0;i--){
             //从第一个非叶子结点从下至上，从右至左调整结构
             adjustHeap(arr,i,arr.length);
