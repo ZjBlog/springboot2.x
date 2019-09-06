@@ -1,6 +1,5 @@
 package spring.springboot2.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
@@ -44,7 +43,7 @@ public class EnvAutoConfig {
 
 
     @Bean
-    public ApplicationRunner init2() {
+    public ApplicationRunner INIT2() {
         return (ApplicationArguments args) -> {
             System.out.println("====================222222222222");
         };

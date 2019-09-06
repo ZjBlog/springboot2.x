@@ -107,14 +107,28 @@ public class Test15 {
 
     /**
      * a是基本类型，b和c是引用类型，两者进行比较时有一个拆箱的过程，也就是会默认调用b和c的intValue()方法
+     * 包装类和基本类型比较时，包装类自动拆箱为基本类型
      */
     @Test
     public void test5() {
-        int a = 1;
-        Integer b = Integer.valueOf(1);
-        Integer c = new Integer(1);
+        int a = 128;
+        //装箱
+        Integer b = Integer.valueOf(128);
+        // 拆箱
+        int d=b.intValue();
+        Integer c = new Integer(128);
 
-        System.out.println(a == b);//true
+        System.out.println(b==a);//true
         System.out.println(a == c);//true
+        System.out.println(b == c);//false
+        Integer i7  = 127;
+        Integer i8  = 127;
+        System.out.println(i7==i8);//true
+        System.out.println(i7.equals(i8));//true
+    }
+
+   // @Test
+    public void test6() {
+
     }
 }

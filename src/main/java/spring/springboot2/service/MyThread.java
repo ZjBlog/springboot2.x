@@ -2,6 +2,7 @@ package spring.springboot2.service;
 
 import lombok.AllArgsConstructor;
 
+import javax.annotation.PostConstruct;
 import java.util.concurrent.CountDownLatch;
 
 /**

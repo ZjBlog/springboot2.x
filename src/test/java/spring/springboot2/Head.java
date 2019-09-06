@@ -9,11 +9,11 @@ import java.util.Arrays;
 public class Head {
     public static void main(String[] args) {
         // int []arr = {7,6,7,11,5,12,3,0,1};
-        int[] arr = {7, 3, 8, 5, 1, 2};
+        int[] arr = {7, 3, 8,8,5, 5, 1, 2};
         System.out.println("排序前：" + Arrays.toString(arr));
-        // sort(arr);
-        //insertionSort(arr);
-        quickSort(arr, 0, arr.length - 1);
+        sort(arr);
+        insertionSort(arr);
+        //quickSort(arr, 0, arr.length - 1);
         System.out.println("排序前：" + Arrays.toString(arr));
     }
 
@@ -108,38 +108,41 @@ public class Head {
             return;
         }
 
+        //左侧是大的
+        //右侧是小的
         if (left < right) {
+
+            // 选取一端值为基准值 左端为基点
             int i = left;
             int j = right;
-            int temp = array[i]; // 选取一端值为基准值 左端为基点
+            int temp = array[left];
 
             while (i < j) {
                 // 如果 j 处值大于等于基准值，那么不用交换数据，直接将 j 向前移动，
                 //右边先走
                 // 直到 i 等于 j 或者    j 处值比基准值小 条件
-                while (i < j && array[j] >= temp) {
+                while (i < j && array[j] <= temp) {
                     j--;
                 }
-
                 // 如果 i 处值小于等于基准值，那么将i向后移动就可以了
-                while (i < j && array[i] <= temp) {
+                while (i < j && array[i] >= temp) {
                     i++;
                 }
 
 // 上面的循环结束表示找到了位置或者(i>=j)了，交换两个数在数组中的位置
                 if (i < j) {
-                    int tmp = array[i];
+                    int t = array[i];
                     array[i] = array[j];
-                    array[j] = tmp;
+                    array[j] = t;
                 }
             }
-
 
             // 将基准数放到中间的位置（基准数归位）
             array[left] = array[i];
             array[i] = temp;
-            quickSort(array, left, i - 1);
-            quickSort(array, i + 1, right);
+            quickSort(array, 0, i - 1);
+            quickSort(array, i + 1, right - 1);
+
         }
     }
 }
