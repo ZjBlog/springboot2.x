@@ -117,7 +117,7 @@ public class Test5 {
         return null;
     }
 
-    public static void main(String[] args) {
+    public static void main12(String[] args) {
         String A="this is dog";String B="this is a cat";
 
         Map<String,Integer> map=new HashMap<>();
