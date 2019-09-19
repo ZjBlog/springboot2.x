@@ -14,7 +14,8 @@ public class MyFiflter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("自定义Fiflter");
+        log.info("自定义Fiflter  pre");
         filterChain.doFilter(servletRequest,servletResponse);
+        log.info("自定义Fiflter post");
     }
 }
