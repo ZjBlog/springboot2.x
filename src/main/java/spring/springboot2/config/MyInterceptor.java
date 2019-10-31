@@ -32,7 +32,9 @@ public class MyInterceptor implements HandlerInterceptor {
             //类上有该标记
             annotation = bean.getClass().getAnnotation(Auth.class);
         }
-
+        if (annotation == null) {
+            return true;
+        }
         log.info(annotation.name());
         return true;
     }
