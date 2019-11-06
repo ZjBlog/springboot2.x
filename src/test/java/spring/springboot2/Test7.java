@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author : ZJ
@@ -16,7 +17,7 @@ public class Test7 {
     @Test
     public void test() throws InterruptedException, ExecutionException {
 
-
+        AtomicInteger d=new AtomicInteger(1);
         TaskWithResult taskWithResult = new TaskWithResult();
 
         FutureTask<Integer> task1=new FutureTask<>(taskWithResult);
@@ -70,6 +71,10 @@ public class Test7 {
     public static void main1(String[] args) {
 
         ExecutorService executorService = Executors.newFixedThreadPool(10);
+        Executors.newSingleThreadExecutor();
+
+        Executors.newCachedThreadPool();
+        Executors.newScheduledThreadPool(10);
 
 
         ThreadPoolExecutor executor = new ThreadPoolExecutor(10, 10, 1000, TimeUnit.SECONDS, new LinkedBlockingQueue(100), new ThreadPoolExecutor.DiscardPolicy());
