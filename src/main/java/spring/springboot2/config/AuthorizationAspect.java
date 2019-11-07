@@ -39,7 +39,7 @@ public class AuthorizationAspect {
 //    private void anyPublicOperation1() {
 //    }
     // 指定UserController下的所有的方法
-    @Pointcut("@annotation(spring.springboot2.config.Test)")
+    @Pointcut("@annotation(spring.springboot2.config.TestAuth)")
     private void anyPublicOperation2() {
     }
 
@@ -68,11 +68,11 @@ public class AuthorizationAspect {
 //
 //    }
     @Around("AuthorizationAspect.anyPublicOperation2()")
-    private void apiAuth12(ProceedingJoinPoint joinPoint) throws NoSuchMethodException {
+    private void apiAuth12(ProceedingJoinPoint joinPoint) throws Throwable {
 
         // 获取连接点的参数
         Object[] strings = joinPoint.getArgs();
-        for (Object object : strings) {
+            for (Object object : strings) {
             System.out.println("==========:" + object);
         }
 
@@ -85,12 +85,13 @@ public class AuthorizationAspect {
         }
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         //拿到的时接口不是实现类
-        //methodSignature.getMethod();
+        Method method1 = methodSignature.getMethod();
 
         Method method = joinPoint.getTarget().getClass().getMethod(methodSignature.getName(),
                 methodSignature.getMethod().getParameterTypes());
 
-        Test annotation = method.getAnnotation(Test.class);
+
+        TestAuth annotation = method.getAnnotation(TestAuth.class);
 
 
         ExpressionParser parser = new SpelExpressionParser();
@@ -105,5 +106,8 @@ public class AuthorizationAspect {
         String key = expression.getValue(context).toString();
 
 
+        Object proceed = joinPoint.proceed();
+
+        System.out.println(proceed.toString());
     }
 }

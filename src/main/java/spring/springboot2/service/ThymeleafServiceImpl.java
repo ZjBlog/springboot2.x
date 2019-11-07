@@ -65,4 +65,9 @@ public class ThymeleafServiceImpl implements ThymeleafService {
             dest.delete();
         }
     }
+
+    @Override
+    public String test(String name) {
+        return "ok";
+    }
 }

@@ -12,6 +12,6 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Test {
+public @interface TestAuth {
     String value();
 }
