@@ -3,11 +3,9 @@ package spring.springboot2.zj;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.*;
 import spring.springboot2.config.Auth;
+import spring.springboot2.config.Test;
 import spring.springboot2.config.WxTest;
 import spring.springboot2.service.ThymeleafService;
 
@@ -27,6 +25,12 @@ public class HelloWorld {
 
     @Value(value = "${username}")
     private String name;
+
+    @Test("#name")
+    @GetMapping("/test")
+    public String HellorWorld1(@RequestParam("name")String name) {
+        return "Hello World 1Spring boot2.x for" + name + "===" + wxTest;
+    }
 
     @Auth(name = "999999=========99999999999999")
     @GetMapping("/")
