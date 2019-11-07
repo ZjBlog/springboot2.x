@@ -9,9 +9,9 @@ import java.util.Arrays;
 public class Head {
     public static void main(String[] args) {
         // int []arr = {7,6,7,11,5,12,3,0,1};
-        int[] arr = {7, 3, 8,8,5, 5, 1, 2};
+        int[] arr = {314,298,508,123,486,145};
         System.out.println("排序前：" + Arrays.toString(arr));
-        sort(arr);
+//        sort(arr);
         insertionSort(arr);
         //quickSort(arr, 0, arr.length - 1);
         System.out.println("排序前：" + Arrays.toString(arr));
@@ -89,7 +89,7 @@ public class Head {
             return;
         }
         // 和冒泡排序有些类似，这里是遍历趟数
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i <2; i++) {
             // 精髓是从局部有序，到整体有序
             int temp = array[i]; // 当前基准元素
             int j;
