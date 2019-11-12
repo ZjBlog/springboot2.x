@@ -127,8 +127,8 @@ public class Test15 {
         System.out.println(i7.equals(i8));//true
     }
 
-   // @Test
+    @Test
     public void test6() {
-
+        System.out.println( (250*3/16 + 1) *16 /3 * 4);
     }
 }
