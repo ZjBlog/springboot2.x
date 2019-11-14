@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.4.RELEASE</version>
+		<version>2.1.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -22,9 +22,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-        <docker.image.prefix>registry.cn-hangzhou.aliyuncs.com</docker.image.prefix>
-		<docker.image.repository>zjdocker/test</docker.image.repository>
-		<tag>1.0</tag>
 	</properties>
 
 	<dependencies>
@@ -34,34 +31,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<!-- jsoup HTML parser library @ https://jsoup.org/ -->
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.11.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-amqp</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -84,11 +60,6 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -97,69 +68,12 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!--            <plugin>-->
-<!--                <groupId>com.spotify</groupId>-->
-<!--                <artifactId>dockerfile-maven-plugin</artifactId>-->
-<!--                <version>1.3.6</version>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<phase>package</phase>-->
-<!--						<goals>-->
-<!--							<goal>build</goal>-->
-<!--							&lt;!&ndash;<goal>push</goal>&ndash;&gt;-->
-<!--						</goals>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash;<repository>${docker.image.prefix}/${project.artifactId}</repository>&ndash;&gt;-->
-<!--					<repository>${docker.image.prefix}/${docker.image.repository}</repository>-->
-<!--                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
-<!--                    &lt;!&ndash; 在setting.xml中配置-->
-<!--                    <servers>-->
-<!--                      <server>-->
-<!--                        <id>registry.cn-hangzhou.aliyuncs.com</id>-->
-<!--                        <username>793953767@qq.com</username>-->
-<!--                        <password>12345</password>-->
-<!--                      </server>-->
-<!--                    </servers>-->
-<!--                    &ndash;&gt;-->
-<!--					<tag>${tag}</tag>-->
-<!--                    <buildArgs>-->
-<!--                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>-->
-<!--                    </buildArgs>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-			<!-- 另一个打包工具
-			imageName:镜像的名称，可以通过${project.groupId}/${project.artifactId}:${project.version} 动态制定镜像名称
-当然也可以在前面加上镜像地址，比如127.0.0.1:5000,以声明将构建好的镜像存储在本地
-baseImage: 基础镜像，这里是相当于Dockerfile的FROM java
-resources 下的配置：构建时会生成docker文件夹，这里指生成文件夹的内容来源，包含了mvn clean package 之后的target的文件和生成的jar包。
-			https://www.jianshu.com/p/3b91b8958c3e-->
-			<!--<plugin>-->
-				<!--<groupId>com.spotify</groupId>-->
-				<!--<artifactId>docker-maven-plugin</artifactId>-->
-				<!--<version>1.2.0</version>-->
-				<!--<configuration>-->
-					<!--<imageName>example</imageName>-->
-					<!--<baseImage>java</baseImage>-->
-					<!--<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>-->
-					<!--&lt;!&ndash; copy the service's jar file from target into the root directory of the image &ndash;&gt;-->
-					<!--<resources>-->
-						<!--<resource>-->
-							<!--<targetPath>/</targetPath>-->
-							<!--<directory>${project.build.directory}</directory>-->
-							<!--<include>${project.build.finalName}.jar</include>-->
-						<!--</resource>-->
-					<!--</resources>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<skipTests>true</skipTests>
-				</configuration>
+<!--				<configuration>-->
+<!--					<skipTests>true</skipTests>-->
+<!--				</configuration>-->
 			</plugin>
 		</plugins>
 	</build>
