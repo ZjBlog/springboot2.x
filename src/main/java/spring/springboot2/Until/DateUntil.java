@@ -12,13 +12,7 @@ import java.util.Date;
  */
 public class DateUntil {
 
-    private static ThreadLocal<DateFormat> threadLocal = new ThreadLocal<DateFormat>() {
-        @Override
-        protected DateFormat
-        initialValue() {
-            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        }
-    };
+    private static ThreadLocal<DateFormat> threadLocal = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
     private static ThreadLocal<DateFormat> threadLocal2 = ThreadLocal.withInitial(() -> {
                 return new SimpleDateFormat("yyyy.MM.dd");
             }
