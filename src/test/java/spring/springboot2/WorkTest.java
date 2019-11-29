@@ -11,8 +11,14 @@ import java.util.Date;
 public class WorkTest {
 
     public static void main(String[] args) {
-        DateTimeFormatter fomatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+        System.out.println(Math.ceil((50/16 + 1) *16 /3.0) * 4);
+            Integer id=1;
+        if (null != id || id > 0) {
+           System.out.println("====");
+        }else{
+            System.out.println("aaaaaaa");
+        }
 
     }
 }
