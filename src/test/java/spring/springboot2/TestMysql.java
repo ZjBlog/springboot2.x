@@ -29,4 +29,27 @@ public class TestMysql {
         RoleBot byId = userBotMapper.getById(1);
         log.info(byId.toString());
     }
+
+    @Test
+    public void test1() {
+        RoleBot roleBot=new RoleBot();
+        roleBot.setUser(9);
+        roleBot.setName("张三");
+        roleBot.setUserName("zhangsan");
+        int save = userBotMapper.save(roleBot);
+        log.info("id:"+save);
+        log.info(roleBot.getId()+"");
+    }
+
+
+    @Test
+    public void test2() {
+        RoleBot roleBot=new RoleBot();
+        roleBot.setUser(9);
+        roleBot.setName("张三");
+        roleBot.setUserName("zhangsan");
+        int save = userBotMapper.save1(roleBot);
+        log.info("id:"+save);
+        log.info(roleBot.getId()+"");
+    }
 }
