@@ -1,6 +1,7 @@
 package spring.springboot2.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +16,11 @@ import java.util.List;
 @Data
 public class UserBot implements Serializable {
 
+ /**
+  * DefaultIdentifierGeneratorFactory 策略
+  */
+//   @GenericGenerator(name = "idGenerator", strategy = "uuid")
+//   @GeneratedValue(generator = "idGenerator")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
