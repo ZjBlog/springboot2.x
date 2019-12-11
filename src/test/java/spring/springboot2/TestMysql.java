@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import spring.springboot2.entity.RoleBot;
+import spring.springboot2.entity.User;
 import spring.springboot2.mapper.UserBotMapper;
 
 /**
@@ -51,5 +52,17 @@ public class TestMysql {
         int save = userBotMapper.save1(roleBot);
         log.info("id:"+save);
         log.info(roleBot.getId()+"");
+    }
+
+    @Test
+    public void test3() {
+        User user=new User();
+        user.setName("d");
+        user.setUserId(11);
+        user.setAge(11);
+
+        int s=userBotMapper.save2(user);
+        log.info("info#{}",s);
+        log.info(user.toString());
     }
 }

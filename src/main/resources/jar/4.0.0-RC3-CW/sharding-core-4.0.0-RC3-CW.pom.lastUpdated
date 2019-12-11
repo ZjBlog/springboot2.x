@@ -1,7 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Thu Nov 07 16:04:08 CST 2019
-http\://artifactory.jd.com/libs-snapshots/.lastUpdated=1573113848591
-https\://repo.maven.apache.org/maven2/.lastUpdated=1573113848551
-http\://artifactory.jd.com/libs-snapshots/.error=
-http\://artifactory.jd.com/libs-releases/.lastUpdated=1573113848767
-https\://repo.maven.apache.org/maven2/.error=
