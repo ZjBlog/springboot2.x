@@ -38,4 +38,9 @@ public interface UserBotMapper {
             statement = "select replace(uuid(), '-', '') as id from dual")
     @Insert("INSERT INTO t_user(`id`,`user_id`,`name`,`age`) VALUES(#{id},#{userId},#{name},#{age})")
     int save2(User user);
+
+
+
+    @Insert("INSERT INTO t_user(`id`,`user_id`,`name`,`age`) VALUES(#{id},#{userId},#{name},#{age})")
+    int save3(User user);
 }

@@ -65,4 +65,17 @@ public class TestMysql {
         log.info("info#{}",s);
         log.info(user.toString());
     }
+
+
+    @Test
+    public void test4() {
+        User user=new User();
+        user.setName("d");
+        user.setUserId(11);
+        user.setAge(11);
+        user.setId(1);
+        int s=userBotMapper.save3(user);
+        log.info("info#{}",s);
+        log.info(user.toString());
+    }
 }

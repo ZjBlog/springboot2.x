@@ -1,6 +1,7 @@
 package spring.springboot2.entity;
 
 import lombok.Data;
+import sun.nio.cs.ext.IBM037;
 
 import java.io.Serializable;
 
@@ -13,7 +14,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 
-    private String id;
+    private Integer id;
 
 
     private String name;

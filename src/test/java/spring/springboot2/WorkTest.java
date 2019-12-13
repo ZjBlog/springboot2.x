@@ -12,7 +12,7 @@ public class WorkTest {
 
     public static void main(String[] args) {
 
-        System.out.println(Math.ceil((50/16 + 1) *16 /3.0) * 4);
+        System.out.println(Math.ceil((22/16 + 1) *16 /3.0) * 4);
             Integer id=1;
         if (null != id || id > 0) {
            System.out.println("====");
