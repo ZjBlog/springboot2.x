@@ -18,7 +18,7 @@ import spring.springboot2.mapper.UserBotMapper;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@TestPropertySource("classpath:application-mybatis.properties")
+@TestPropertySource("classpath:application-sharding.properties")
 @Slf4j
 public class TestMysql {
 
@@ -67,15 +67,15 @@ public class TestMysql {
     }
 
 
-    @Test
-    public void test4() {
-        User user=new User();
-        user.setName("d");
-        user.setUserId(11);
-        user.setAge(11);
-        user.setId(1);
-        int s=userBotMapper.save3(user);
-        log.info("info#{}",s);
-        log.info(user.toString());
-    }
+//    @Test
+//    public void test4() {
+//        User user=new User();
+//        user.setName("d");
+//        user.setUserId(11);
+//        user.setAge(11);
+//        user.setId(1);
+//        int s=userBotMapper.save3(user);
+//        log.info("info#{}",s);
+//        log.info(user.toString());
+//    }
 }

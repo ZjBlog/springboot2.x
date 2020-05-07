@@ -1,6 +1,7 @@
 package spring.springboot2.mapper;
 
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
 import spring.springboot2.entity.RoleBot;
 import spring.springboot2.entity.User;
 
@@ -11,6 +12,7 @@ import spring.springboot2.entity.User;
  */
 //@CacheNamespace
 @Mapper
+@Component
 public interface UserBotMapper {
 
     @Select("select id, name,user,user_name from role_bot where id=#{id}")
