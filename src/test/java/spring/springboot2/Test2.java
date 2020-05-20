@@ -1,10 +1,9 @@
 package spring.springboot2;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import org.apache.commons.lang.StringUtils;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.*;
 
 /**
@@ -32,7 +31,7 @@ public class Test2 {
 
     }
 
-    public static void main(String[] args) {
+    public static void main9(String[] args) {
 //        List<String> list=new ArrayList<>();
 //        list.add("1");
 //        list.add("2");
@@ -55,5 +54,16 @@ public class Test2 {
         System.out.println(size==size1);
         System.out.println(UUID.randomUUID().toString().replaceAll("-","").length());
 
+    }
+
+    public static void main(String[] args) {
+        BigDecimal a = new BigDecimal(10);
+        BigDecimal b = new BigDecimal(3);
+        BigDecimal divide = a.divide(b, 2, BigDecimal.ROUND_HALF_UP);
+        System.out.println(divide);
+        NumberFormat numberFormat = NumberFormat.getPercentInstance();
+        numberFormat.setMaximumFractionDigits(2);
+        divide.doubleValue();
+        System.out.println(numberFormat.format(divide.doubleValue()));
     }
 }

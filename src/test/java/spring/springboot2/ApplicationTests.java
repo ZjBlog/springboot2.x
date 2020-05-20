@@ -2,13 +2,8 @@ package spring.springboot2;
 
 import org.assertj.core.util.Lists;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 //@RunWith(SpringRunner.class)
@@ -109,6 +104,7 @@ public class ApplicationTests {
 //        for (String s : list) {
 //            list.removeIf("1"::equals);
 //        }
+
 
     }
 
