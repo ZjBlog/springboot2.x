@@ -35,6 +35,28 @@ public abstract class BaseCleanTask {
 
     /**
      * 初始话线程池
+     * ①ArrayBlockingQueue
+     * <p>
+     * 基于数组的有界阻塞队列，按FIFO排序。新任务进来后，会放到该队列的队尾，有界的数组可以防止资源耗尽问题。
+     * 当线程池中线程数量达到corePoolSize
+     * 后，再有新任务进来，则会将任务放入该队列的队尾，等待被调度。如果队列已经是满的，则创建一个新线程，
+     * 如果线程数量已经达到maxPoolSize，则会执行拒绝策略。
+     * <p>
+     * ②LinkedBlockingQuene
+     * <p>
+     * 基于链表的无界阻塞队列（其实最大容量为Interger.MAX），按照FIFO排序。由于该队列的近似无界性，
+     * 当线程池中线程数量达到corePoolSize
+     * 后，再有新任务进来，会一直存入该队列，而不会去创建新线程直到maxPoolSize，
+     * 因此使用该工作队列时，参数maxPoolSize其实是不起作用的。
+     * <p>
+     * ③SynchronousQuene
+     * <p>
+     * 一个不缓存任务的阻塞队列，生产者放入一个任务必须等到消费者取出这个任务。
+     * 也就是说新任务进来时，不会缓存，而是直接被调度执行该任务，如果没有可用线程，则创建新线程，如果线程数量达到maxPoolSize，则执行拒绝策略。
+     * <p>
+     * ④PriorityBlockingQueue
+     * <p>
+     * 具有优先级的无界阻塞队列，优先级通过参数Comparator实现。
      *
      * @param coreSize 核心线程数
      */
@@ -43,9 +65,10 @@ public abstract class BaseCleanTask {
         ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("clean-" + getKey() + "104-pool" +
                 "-%d"
         ).build();
+        //SynchronousQuene
         executor = new ThreadPoolExecutor(
+                0,
                 coreSize,
-                10,
                 1L,
                 TimeUnit.HOURS,
                 new LinkedBlockingQueue<>(2),

@@ -17,7 +17,7 @@ public class WorkService {
 
         try {
             Thread.sleep(1000 * 2);
-            log.info("====:" + Thread.currentThread().getName());
+            log.info("耗时操作====:" + Thread.currentThread().getName());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

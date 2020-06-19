@@ -1,9 +1,9 @@
 package spring.springboot2.entity;
 
 import lombok.Data;
-import sun.nio.cs.ext.IBM037;
 
 import java.io.Serializable;
+import java.util.function.Predicate;
 
 /**
  * @author : ZJ
@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 
+    private static final long serialVersionUID = -6978203114843094910L;
     private String id;
 
 
@@ -23,4 +24,6 @@ public class User implements Serializable {
 
     private Integer age;
 
+
+    public static Predicate<User> ageGreaterThan70 = x -> x.getAge() > 70;
 }

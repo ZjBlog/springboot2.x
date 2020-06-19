@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 public class TaskOne extends BaseCleanTask {
 
 
-    //@PostConstruct
+    // @PostConstruct
     public void execute() {
-        init(2);
+        init(10);
         clean(200);
     }
 

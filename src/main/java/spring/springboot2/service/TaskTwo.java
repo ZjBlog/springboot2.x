@@ -27,7 +27,7 @@ public class TaskTwo extends BaseCleanTask {
 
     @PostConstruct
     public void execute() {
-        init(0);
+        init(10);
         clean(200);
     }
 
