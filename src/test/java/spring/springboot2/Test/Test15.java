@@ -1,4 +1,4 @@
-package spring.springboot2;
+package spring.springboot2.Test;
 
 import org.hibernate.validator.constraints.br.TituloEleitoral;
 import org.junit.Test;

@@ -1,8 +1,4 @@
-package spring.springboot2;
-
-import org.junit.Test;
-
-import java.util.HashMap;
+package spring.springboot2.Test;
 
 /**
  * @author : ZJ

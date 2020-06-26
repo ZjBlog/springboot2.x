@@ -1,4 +1,4 @@
-package spring.springboot2;
+package spring.springboot2.Test;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

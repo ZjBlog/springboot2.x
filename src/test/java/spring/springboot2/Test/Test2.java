@@ -1,4 +1,4 @@
-package spring.springboot2;
+package spring.springboot2.Test;
 
 import com.sun.org.apache.xerces.internal.dom.PSVIAttrNSImpl;
 import org.jsoup.Jsoup;

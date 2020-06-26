@@ -27,14 +27,14 @@ public class DateUntil {
     );
 
     public static void main(String[] args) {
-        Map<String,String> map=new HashMap<>();
-        map.put("ok","dd");
-        map.put("ok1","dd");
-        map.put("ok2","ppp");
-        map.put("ok3","ppp");
-        map.put("ok4","ppp");
-        map.put("ok5","ppp");
-        map.put("ok6","ppp");
+        Map<String, String> map = new HashMap<>();
+        map.put("ok", "dd");
+        map.put("ok1", "dd");
+        map.put("ok2", "ppp");
+        map.put("ok3", "ppp");
+        map.put("ok4", "ppp");
+        map.put("ok5", "ppp");
+        map.put("ok6", "ppp");
     }
 
 }

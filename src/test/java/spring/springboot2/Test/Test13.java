@@ -1,4 +1,4 @@
-package spring.springboot2;
+package spring.springboot2.Test;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

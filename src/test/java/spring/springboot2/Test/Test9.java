@@ -1,4 +1,4 @@
-package spring.springboot2;
+package spring.springboot2.Test;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

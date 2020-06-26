@@ -1,4 +1,4 @@
-package spring.springboot2;
+package spring.springboot2.Test;
 
 import org.assertj.core.util.Lists;
 import org.junit.Test;

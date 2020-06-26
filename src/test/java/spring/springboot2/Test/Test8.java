@@ -1,4 +1,4 @@
-package spring.springboot2;
+package spring.springboot2.Test;
 
 import spring.springboot2.service.MyService;
 import spring.springboot2.service.MyThread;

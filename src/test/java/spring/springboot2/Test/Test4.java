@@ -1,4 +1,4 @@
-package spring.springboot2;
+package spring.springboot2.Test;
 
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;
