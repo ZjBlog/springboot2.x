@@ -1,13 +1,11 @@
 package spring.springboot2.Test1;
 
 import org.springframework.context.expression.MapAccessor;
-import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import spring.springboot2.entity.Address;
-import spring.springboot2.entity.Student;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,11 +33,17 @@ public class ExpressionTest {
 
         Address person = new Address();
         person.setAdd("========");
-        List<String> list = new ArrayList<String>() {{
+        List<String> list = new ArrayList<String>() {
+            private static final long serialVersionUID = -2677606494520629688L;
+
+            {
             add("fsx");
             add("周杰伦");
         }};
-        Map<String, Integer> map = new HashMap<String, Integer>() {{
+        Map<String, Integer> map = new HashMap<String, Integer>() {
+            private static final long serialVersionUID = -4771533876819365762L;
+
+            {
             put("fsx", 18);
             put("周杰伦", 40);
         }};
@@ -53,6 +57,8 @@ public class ExpressionTest {
         ctx.setVariable("myList", list);
         ctx.setVariable("myMap", map);
 
+
+        Expression expression = parser.parseExpression("#myPerson");
 
         //============================================
         System.out.println(parser.parseExpression("#myPerson").getValue(ctx)); //Person{name='fsx', age=30}
