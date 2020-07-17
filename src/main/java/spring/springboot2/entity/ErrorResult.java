@@ -27,5 +27,5 @@ public class ErrorResult implements Serializable {
     private String code;
 
     @Length
-    private String messageD;
+    private String message;
 }
