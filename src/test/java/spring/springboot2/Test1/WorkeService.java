@@ -20,8 +20,8 @@ import java.util.List;
  */
 public class WorkeService {
 
-    public Boolean run() {
-        System.out.println("==========================run");
+    public Boolean run(String name) {
+        System.out.println("==========================run:" + name);
         return Boolean.TRUE;
     }
 
