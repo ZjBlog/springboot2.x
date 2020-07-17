@@ -17,9 +17,11 @@ public class TetsDto implements Serializable {
 
     private static final long serialVersionUID = 7168145817103794957L;
 
-
-    @NotNull(message = "不能为空")
     @Size(max = 4)
-    private String companyType_type;
+    @NotNull(message = "公司类型不能为空")
+    private String companyType;
+
+    @NotNull(message = "公司名字不能为空")
+    private String name;
 
 }

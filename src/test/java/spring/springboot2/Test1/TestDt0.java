@@ -1,7 +1,7 @@
 package spring.springboot2.Test1;
 
-import spring.springboot2.Until.JavaxValidator;
-import spring.springboot2.entity.TetsDto;
+import spring.springboot2.entity.ErrorResult;
+import spring.springboot2.entity.TestDto2;
 
 /**
  * @author zhangjun486
@@ -12,9 +12,8 @@ import spring.springboot2.entity.TetsDto;
 public class TestDt0 {
 
     public static void main(String[] args) {
-        TetsDto tetsDto = new TetsDto();
-        tetsDto.setCompanyType_type("789999");
-        String validate = JavaxValidator.validate(tetsDto);
-        System.out.println(validate);
+        TestDto2 testDto2 = new TestDto2();
+        //@Accessors(chain = true)链式调用
+        ErrorResult.error().setCode("d").setCode("");
     }
 }
