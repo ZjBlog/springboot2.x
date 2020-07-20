@@ -1,7 +1,10 @@
 package spring.springboot2.zj;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,25 @@ import java.util.List;
 @RestController
 @RequestMapping("/java")
 public class HelloJava {
+
+    /**
+     * 接收 url 或 form 表单中的参数
+     * "" 替换成空格
+     * 如果是@RequestBody 接收参数 需自定义
+     * Jackson2ObjectMapperBuilderCustomizer
+     *
+     * @param binder
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+    }
+
+    @PostMapping("/test2")
+    public String HellorWorld4(@RequestBody TetsDto testDto) {
+        System.out.println(testDto.toString());
+        return "ok";
+    }
 
     @PostMapping("/test")
     public String HellorWorld2(@Valid @RequestBody TetsDto testDto, BindingResult bindingResult) {

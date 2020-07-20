@@ -2,6 +2,7 @@ package spring.springboot2.entity;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -21,7 +22,7 @@ public class TetsDto implements Serializable {
     @NotNull(message = "公司类型不能为空")
     private String companyType;
 
-    @NotNull(message = "公司名字不能为空")
+    @NotBlank(message = "公司名字不能为空")
     private String name;
 
 }
