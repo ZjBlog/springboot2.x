@@ -1,5 +1,6 @@
 package spring.springboot2.zj;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -9,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import spring.springboot2.Until.CacheService;
 import spring.springboot2.entity.TetsDto;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author zhangjun486
@@ -23,6 +26,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/java")
 public class HelloJava {
+
+    @Autowired
+    private CacheService cacheService;
 
     /**
      * 接收 url 或 form 表单中的参数
@@ -65,7 +71,13 @@ public class HelloJava {
      * @return
      */
     @PostMapping("/test1")
-    public String HellorWorld3(@Valid @RequestBody TetsDto testDto) {
+    public String HellorWorld3(@Valid @RequestBody TetsDto testDto) throws ExecutionException {
+
+        String kkk = cacheService.productCache.get("kkk");
+        System.out.println(kkk);
+
+        String unchecked = cacheService.productCache.getUnchecked("888");
+        System.out.println(unchecked);
         return "ok";
     }
 }

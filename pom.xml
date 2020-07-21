@@ -93,6 +93,12 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.9</version>
 		</dependency>
+
+		<dependency>
+			<artifactId>guava</artifactId>
+			<groupId>com.google.guava</groupId>
+			<version>28.2-jre</version>
+		</dependency>
 	</dependencies>
 
 	<build>
