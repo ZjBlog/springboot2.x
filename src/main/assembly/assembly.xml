@@ -1,0 +1,32 @@
+<assembly>
+<id>assembly</id>
+<formats>
+    <format>dir</format>
+    <format>tar.gz</format>
+</formats>
+<includeBaseDirectory>true</includeBaseDirectory>
+<fileSets>
+    <!-- -->
+    <fileSet>
+        <directory>${profile.dir}</directory>
+        <outputDirectory>conf</outputDirectory>
+        <fileMode>0644</fileMode>
+    </fileSet>
+
+    <fileSet>
+        <directory>src/main/bin</directory>
+        <outputDirectory>bin</outputDirectory>
+        <fileMode>0755</fileMode>
+    </fileSet>
+
+    <fileSet>
+        <directory>target</directory>
+        <outputDirectory>lib</outputDirectory>
+        <fileMode>0755</fileMode>
+        <includes>
+            <include>${project.build.finalName}.jar</include>
+        </includes>
+    </fileSet>
+</fileSets>
+
+</assembly>
