@@ -9,8 +9,10 @@ import spring.springboot2.entity.Address;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author zhangjun486
@@ -20,7 +22,7 @@ import java.util.Map;
  */
 public class ExpressionTest {
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
 
 //        EvaluationContext context=new StandardEvaluationContext();
 //
@@ -37,16 +39,18 @@ public class ExpressionTest {
             private static final long serialVersionUID = -2677606494520629688L;
 
             {
-            add("fsx");
-            add("周杰伦");
-        }};
+                add("fsx");
+                add("周杰伦");
+            }
+        };
         Map<String, Integer> map = new HashMap<String, Integer>() {
             private static final long serialVersionUID = -4771533876819365762L;
 
             {
-            put("fsx", 18);
-            put("周杰伦", 40);
-        }};
+                put("fsx", 18);
+                put("周杰伦", 40);
+            }
+        };
 
         //EvaluationContext ctx = new StandardEvaluationContext();
         StandardEvaluationContext ctx = new StandardEvaluationContext();
@@ -85,5 +89,51 @@ public class ExpressionTest {
 
         System.out.println(parser.parseExpression("new spring.springboot2.Test1.WorkeService().run()").getValue());
 
+    }
+
+    /**
+     * spel解析器
+     */
+    private static final SpelExpressionParser parser = new SpelExpressionParser();
+
+    /**
+     * spel缓存
+     */
+    private static final ConcurrentHashMap<String, Expression> expressionMap = new ConcurrentHashMap<>(256);
+
+    public static void main(String[] args) {
+
+//        String el = "#root['student']['address']['city']";
+        String el = "student.address.city";
+
+        Map<String, Object> address = new HashMap<>();
+        address.put("city", "北京");
+        Map<String, Object> student = new HashMap<>();
+        student.put("address", address);
+        Map<String, Object> root = new LinkedHashMap<>();
+        root.put("student", student);
+
+
+        Expression expression = getExpression(el);
+
+        StandardEvaluationContext context = new StandardEvaluationContext(root);
+        //这里很关键，如果没有配置MapAccessor，那么只能用['c']['a']这种解析方式
+        context.addPropertyAccessor(new MapAccessor());
+
+        Object value = expression.getValue(context);
+        System.out.println(value);
+    }
+
+    /**
+     * 从缓存中获取spel编译表达式
+     *
+     * @return SpelExpression
+     */
+    private static Expression getExpression(String el) {
+        Expression expression = expressionMap.get(el);
+        if (expression != null) {
+            return expression;
+        }
+        return expressionMap.computeIfAbsent(el, k -> parser.parseRaw(el));
     }
 }

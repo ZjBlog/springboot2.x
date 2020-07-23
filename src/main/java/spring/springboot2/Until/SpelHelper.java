@@ -9,6 +9,7 @@ package spring.springboot2.Until;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.expression.BeanFactoryResolver;
+import org.springframework.context.expression.MapAccessor;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
@@ -37,6 +38,19 @@ public class SpelHelper {
     private static ExpressionParser parser = new SpelExpressionParser();
 
     private static ApplicationContext applicationContext;
+
+    /**
+     * 后端先将json序列化为一个map，然后将这个map作为root对象进行el解析
+     */
+    /**
+     *采用el表达式进行解析，针对map的解析写法比较复杂：map['student']['address']['city']
+     * 以上写法不优雅，为了更优雅的兼容map解析，需要对原有的StandardEvaluationContext添加一个属性访问器：MapAccessor
+     * 这样就可以通过如下写法获取属性：
+     *map.student.address.city
+     */
+    static {
+        context.addPropertyAccessor(new MapAccessor());
+    }
 
     public static void clearCache() {
         cacheMap.clear();
