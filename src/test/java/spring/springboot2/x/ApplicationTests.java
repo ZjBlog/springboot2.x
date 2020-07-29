@@ -7,12 +7,17 @@ import org.springframework.test.context.ActiveProfiles;
 
 @Slf4j
 @SpringBootTest
-@ActiveProfiles(value = "dev")
+@ActiveProfiles(value = "test")
 public class ApplicationTests {
 
     @Test
     public void contextLoads() {
         log.info("test");
+    }
+
+    @Test
+    public void testLevel() {
+        log.info("log level is debug :{}", log.isDebugEnabled());
     }
 
 }
