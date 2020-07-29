@@ -11,8 +11,11 @@ public class HelloWorld {
     @Value("${name}")
     private String testname;
 
+    @Value("${importName}")
+    private String name;
+
     @GetMapping("/")
     public String HellorWorld() {
-        return "Hello World Spring boot2.x" + testname;
+        return "Hello World Spring boot2.x" + testname + ":==:" + name;
     }
 }
