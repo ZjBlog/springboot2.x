@@ -1,6 +1,7 @@
 package spring.springboot2.entity;
 
 import lombok.Data;
+import spring.springboot2.Until.EnumValid;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -24,5 +25,8 @@ public class TetsDto implements Serializable {
 
     @NotBlank(message = "公司名字不能为空")
     private String name;
+    @NotBlank(message = "枚举名字不能为空")
+    @EnumValid(enumClass = TestEnum.class)
+    private String enumType;
 
 }

@@ -7,7 +7,7 @@ package spring.springboot2.entity;
  * @Description
  */
 public enum TestEnum {
-
+    TEST1("test", "999"),
     TEST("test", "999");
 
     private String code;
