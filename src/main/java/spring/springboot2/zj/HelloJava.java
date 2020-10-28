@@ -1,14 +1,17 @@
 package spring.springboot2.zj;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import spring.springboot2.Until.CacheService;
 import spring.springboot2.entity.TetsDto;
@@ -78,6 +81,14 @@ public class HelloJava {
 
         String unchecked = cacheService.productCache.getUnchecked("888");
         System.out.println(unchecked);
+        return "ok";
+    }
+
+    @GetMapping("/test5")
+    public String HellorWorld5(@RequestParam(name = "code") String code) {
+        if (StringUtils.isBlank(code)) {
+            throw new NullPointerException("code is null");
+        }
         return "ok";
     }
 }
