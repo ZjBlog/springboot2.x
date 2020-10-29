@@ -28,6 +28,7 @@ public class SayHelloWorldWrapper implements Say {
     @Override
     public String sayHello() {
 
+        //say 为key的配置信息
         return WrapMethodHelper.invoke("sayHello", "say", wrapService, new WrapTemplate() {
             @Override
             public Object callReal() {

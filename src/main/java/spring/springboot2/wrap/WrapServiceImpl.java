@@ -42,6 +42,7 @@ public class WrapServiceImpl implements WrapService {
 
     @Override
     public WrapRuleDTO queryRuleConf(String key) {
+        //根据key查询配置信息
         //调用config 查看配置
 //        String info = configService.getConfigValue(WRAP_RULE_PREFIX + key);
 //        return JSON.parseObject(info, WrapRuleDTO.class);
