@@ -1,5 +1,6 @@
 package spring.springboot2.zj;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import spring.springboot2.Until.SpringContextUtil;
@@ -16,6 +17,10 @@ import java.util.Map;
  */
 @RestController
 public class TestController {
+
+    @Autowired
+    private Say say;
+
     @GetMapping("/test9")
     public String HellorWorld2() {
         Map<String, Say> beansOfType1 = SpringContextUtil.getBeansOfType(Say.class);
@@ -27,6 +32,13 @@ public class TestController {
     public String HellorWorld3() {
         SayHelloWorldWrapper bean = SpringContextUtil.getBean(SayHelloWorldWrapper.class);
         System.out.println(bean.sayHello());
+        return "ok";
+    }
+
+    @GetMapping("/test11")
+    public String HellorWorld31() {
+        //  WrapUtil.getRealBeanOfType(Say.class).sayHello();
+        say.sayHello();
         return "ok";
     }
 }

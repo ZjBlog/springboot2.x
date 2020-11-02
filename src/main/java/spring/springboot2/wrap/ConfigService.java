@@ -13,6 +13,6 @@ public class ConfigService {
 
     public String getConfigValue(String key) {
         //TODO 从数据库或配置文件中获取
-        return "false";
+        return "true";
     }
 }
