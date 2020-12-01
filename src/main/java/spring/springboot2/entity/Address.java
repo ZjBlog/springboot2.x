@@ -3,7 +3,10 @@ package spring.springboot2.entity;
 /**
  *
  */
-public class Address implements Cloneable{
+public class Address implements Cloneable {
+    /**
+     * 4
+     */
     private String add;
 
     public String getAdd() {
@@ -17,9 +20,9 @@ public class Address implements Cloneable{
     @Override
     public Object clone() {
         Address stu = null;
-        try{
+        try {
             stu = (Address)super.clone();
-        }catch(CloneNotSupportedException e) {
+        } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         return stu;

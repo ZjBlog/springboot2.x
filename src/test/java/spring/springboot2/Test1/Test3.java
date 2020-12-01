@@ -1,5 +1,7 @@
 package spring.springboot2.Test1;
 
+import spring.springboot2.entity.TestEnum;
+
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -10,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class Test3 {
 
-    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public static void main2(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
         Class<Enum> aClass = (Class<Enum>) Class.forName("spring.springboot2.entity.TestEnum");
 
@@ -27,5 +29,9 @@ public class Test3 {
         System.out.println(enumConstants);
 
 
+    }
+
+    public static void main(String[] args) {
+        TestEnum.valueOf("21");
     }
 }
