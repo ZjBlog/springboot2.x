@@ -1,14 +1,19 @@
 package spring.springboot2.Test2;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.FastDateFormat;
 
 /**
  * @author zhangjun486
@@ -49,7 +54,7 @@ public class Test {
         });
     }
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         // 获取明天零点时间戳
         LocalDate localDate = LocalDate.now();
         // 当前日期+1
@@ -59,6 +64,42 @@ public class Test {
         long timestamp = dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
         System.out.println(timestamp);
         System.out.println((timestamp - System.currentTimeMillis()) / 1000 / 3600);
+
+        System.out.println(StringUtils.startsWith("132", "2"));
     }
 
+    public static void main11(String[] args) {
+        BigDecimal decimal = BigDecimal.valueOf(32000).subtract(BigDecimal.valueOf(61000))
+            .divide(BigDecimal.valueOf(61000), 2, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100L));
+        System.out.println("ddd:" + decimal);
+        if (decimal.compareTo(BigDecimal.valueOf(20L * (-1))) == -1) {
+            System.out.println("小于-20%");
+        } else {
+            System.out.println("大于-20%");
+        }
+    }
+
+    public static void main3(String[] args) {
+        Date date = new Date();
+        Calendar now = Calendar.getInstance();
+        now.setTime(date);
+        now.add(Calendar.MONTH, 0);
+        now.set(Calendar.DAY_OF_MONTH, 1);
+        now.set(Calendar.HOUR_OF_DAY, 0);
+        now.set(Calendar.MINUTE, 0);
+        now.set(Calendar.SECOND, 0);
+        now.set(Calendar.MILLISECOND, 0);
+
+        System.out.println(now.getTime());
+        FastDateFormat sdf = FastDateFormat.getInstance("yyyy-MM-dd");
+        String format = sdf.format(now.getTime());
+        System.out.println(format);
+    }
+
+    public static void main(String[] args) {
+        BigDecimal bigDecimal = new BigDecimal("1.10");
+
+        BigDecimal bigDecimal1 = bigDecimal.subtract(new BigDecimal("1.01"));
+        System.out.println(bigDecimal1);
+    }
 }
